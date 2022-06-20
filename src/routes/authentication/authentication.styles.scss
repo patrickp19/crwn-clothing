@@ -1,0 +1,22 @@
+.authentication-container {
+  --flow-spacer: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+.flow-content > * + * {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+@media (min-width: 900px) {
+  .authentication-container {
+    flex-direction: row;
+    max-width: 900px;
+  }
+
+  .flow-content > * + * {
+    margin: 0 0 0 calc(2 * var(--flow-spacer, 3em));
+  }
+}
