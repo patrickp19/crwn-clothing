@@ -6,8 +6,7 @@ import Button from "../button/button.component";
 
 import {
   signInWithGooglePopup,
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
+  // createAuthUserWithEmailAndPassword,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
@@ -27,32 +26,26 @@ const SignInForm = () => {
   };
 
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
-    console.log("user", user);
-    const userDocRef = await createUserDocumentFromAuth(user);
-    console.log("clg userDocRef", userDocRef);
+    await signInWithGooglePopup();
+    // setCurrentUser(user);
+    // createUserDocumentFromAuth(user);
+    // const userDocRef = await createUserDocumentFromAuth(user);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
 
-      console.log("response", response);
-      const { user } = response;
-      console.log("user", user);
+      // const { user } = response;
+      // setCurrentUser(user);
 
       // await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
-      //   console.log(response);
     } catch (e) {
       switch (e.code) {
-        case "auth/wrong-person":
+        case "auth/wrong-password":
           alert("incorrect password for email");
           break;
         case "auth/user-not-found":

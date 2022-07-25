@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 2em 0;
+  margin-bottom: 2em;
 }
 .flow-content > * + * {
   margin-top: var(--flow-spacer, 3em);
