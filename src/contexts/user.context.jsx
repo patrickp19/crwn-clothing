@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
         createUserDocumentFromAuth(user);
       }
       setCurrentUser(user);
-      console.log("user.context", user);
+      // console.log("user.context", user);
     });
     //return and run unsubscribe function
     return unsubscribe;
